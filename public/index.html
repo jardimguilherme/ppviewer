@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-16" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="text/javascript" src="getData.js"></script>
+    <script type="text/javascript" src="next.js"></script>
+    <script type="text/javascript" src="previous.js"></script>
+    <title>Document</title>
+  </head>
+  <body onload="getData(0)">
+    <div class="top">
+      <h1>PP Viewer</h1>
+    </div>
+    <div class="mid">
+      <div class="left">
+        <div class="html-viewer">
+          <div id="app-body"></div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="data-viewer">
+          <h2>Title:</h2>
+          <div id="app-title"></div>
+          <h2>Language:</h2>
+          <div id="app-lang"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <button class="button" onclick="previous()">←</button>
+      <button class="button" onclick="next()">→</button>
+    </div>
+    <div id="id">0</div>
+  </body>
+</html>
