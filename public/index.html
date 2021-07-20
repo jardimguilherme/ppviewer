@@ -1,38 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-16" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <script type="text/javascript" src="getData.js"></script>
-    <script type="text/javascript" src="next.js"></script>
-    <script type="text/javascript" src="previous.js"></script>
-    <title>Document</title>
-  </head>
-  <body onload="getData(0)">
-    <div class="top">
-      <h1>PP Viewer</h1>
-    </div>
-    <div class="mid">
-      <div class="left">
-        <div class="html-viewer">
-          <div id="app-body"></div>
-        </div>
-      </div>
-      <div class="right">
-        <div class="data-viewer">
-          <h2>Title:</h2>
-          <div id="app-title"></div>
-          <h2>Language:</h2>
-          <div id="app-lang"></div>
-        </div>
+
+<head>
+  <meta charset="UTF-16" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <script type="text/javascript" src="JS/getData.js"></script>
+  <script type="text/javascript" src="JS/scripts.js"></script>
+  <script type="text/javascript" src="JS/createJson.js"></script>
+  <script type="text/javascript" src="JS/FileSaver.min.js"></script>
+  <script type="text/javascript" src="JS/fileDownload.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+  <title>PP Viewer</title>
+</head>
+
+<body onload="getData(0)">
+  <div class="top">
+    <h1>PP Viewer</h1>
+  </div>
+  <div class="mid">
+    <div class="left">
+      <div class="html-viewer">
+        <div id="app-body"></div>
       </div>
     </div>
-    <div class="bottom">
-      <button class="button" onclick="previous()">←</button>
-      <button class="button" onclick="next()">→</button>
+    <div class="right">
+      <br class="data-viewer">
+      <h2>Title:</h2>
+      <div class="data-background">
+        <div id="app-title" class="data"></div>
+      </div>
+      <h2>Language:</h2>
+      <div class="data-background">
+        <p id="app-lang" class="data" contenteditable="true"></p>
+      </div>
+      <h2>É Política?</h2>
+      <button class="policy-button isPolicy" onclick="isPolicy()">Sim</button>
+      <button class="policy-button isntPolicy" onclick="isntPolicy()">Não</button>
+
+      <form id="isPolicy" class="options">
+        <input type="checkbox" id="languageList" name="options" value="languageList" />
+        <label for="languageList">Lista de Idiomas</label><br /><br />
+        <input type="checkbox" id="qa" name="options" value="qa" />
+        <label for="qa">Q/A</label>
+      </form>
+      <form id="isntPolicy" class="options">
+        <input type="checkbox" id="appList" name="options" value="appList" />
+        <label for="appList">Lista de Apps</label><br /><br />
+        <input type="checkbox" id="captcha" name="options" value="captcha" />
+        <label for="captcha">Captcha</label><br /><br />
+        <input type="checkbox" id="cookies" name="options" value="cookies" />
+        <label for="cookies">Cookies</label><br /><br />
+        <input type="checkbox" id="linksAtPageBottom" name="options" value="linksAtPageBottom" />
+        <label for="linksAtPageBottom">Links no Fim da Página</label><br /><br />
+        <input type="checkbox" id="featureList" name="options" value="featureList" />
+        <label for="featureList">Lista de Features</label>
+      </form>
     </div>
-    <div id="id">0</div>
-  </body>
+  </div>
+  </div>
+  <div class="bottom">
+    <button class="button previous-button" onclick="previous()">←</button>
+    <button class="button" onclick="createJson(policy)">Salvar</button>
+    <button class="button save-button">Baixar</button>
+    <button class="button next-button" onclick="next()">→</button>
+  </div>
+  <div class="navigation">
+    <p id="id" contenteditable="true"></p>
+    <button class="navigation-button" onclick="goTo()">Go To</button>
+  </div>
+
+  <script>
+    const arrayGlobal = [];
+    let policy = -1;
+
+    document.querySelector('.save-button').addEventListener('click', (e) => {
+      e.preventDefault();
+      var array = JSON.stringify(arrayGlobal);
+      stringToFile(array);
+    });
+
+    document.querySelector('.isPolicy').addEventListener('click', (e) => {
+      e.preventDefault();
+      policy = 1;
+    })
+    document.querySelector('.isntPolicy').addEventListener('click', (e) => {
+      e.preventDefault();
+      policy = 0;
+    })
+
+
+    document.querySelector('.next-button').addEventListener('click', uncheckAll);
+    document.querySelector('.previous-button').addEventListener('click', uncheckAll);
+  </script>
+</body>
+
 </html>
