@@ -1,4 +1,10 @@
+#files
 package-lock.json
 package.json
+
+#data
+list.json
+
+#deprecated scripts
 server.js
 test.js
