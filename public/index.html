@@ -35,10 +35,15 @@
       <h2>Language:</h2>
       <div class="data-background">
         <p id="app-lang" class="data" contenteditable="true"></p>
-      </div>
+      </div><br />
       <h2>É Política?</h2>
-      <button class="policy-button isPolicy" onclick="isPolicy()">Sim</button>
-      <button class="policy-button isntPolicy" onclick="isntPolicy()">Não</button>
+      <form class="policy-options">
+        <input type="checkbox" id="isPolicy-input" name="options" value="isPolicy-input" onchange="check()"/>
+        <label id="isPolicy-label" for="isPolicy-input">Sim</label>
+        <input type="checkbox" id="isntPolicy-input" name="options" value="isntPolicy-input" onchange="check()"/>
+        <label id="isntPolicy-label" for="isntPolicy-input">Não</label>
+      </form>
+
 
       <form id="isPolicy" class="options">
         <input type="checkbox" id="languageList" name="options" value="languageList" />
@@ -76,24 +81,6 @@
     const arrayGlobal = [];
     let policy = -1;
 
-    document.querySelector('.save-button').addEventListener('click', (e) => {
-      e.preventDefault();
-      var array = JSON.stringify(arrayGlobal);
-      stringToFile(array);
-    });
-
-    document.querySelector('.isPolicy').addEventListener('click', (e) => {
-      e.preventDefault();
-      policy = 1;
-    })
-    document.querySelector('.isntPolicy').addEventListener('click', (e) => {
-      e.preventDefault();
-      policy = 0;
-    })
-
-
-    document.querySelector('.next-button').addEventListener('click', uncheckAll);
-    document.querySelector('.previous-button').addEventListener('click', uncheckAll);
   </script>
 </body>
 

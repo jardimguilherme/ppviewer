@@ -24,14 +24,29 @@ const uncheckAll = () => {
     .forEach((el) => (el.checked = false));
 }
 
-const isPolicy = () => {
-  document.getElementById("isntPolicy").style.display = "none";
-  document.getElementById("isPolicy").style.display = "block";
-}
+const check = () => {
+  var isPolicy = document.getElementById("isPolicy-input").checked;
+  var isntPolicy = document.getElementById("isntPolicy-input").checked;
 
-const isntPolicy = () => {
-  document.getElementById("isPolicy").style.display = "none";
-  document.getElementById("isntPolicy").style.display = "block";
+  if(isPolicy == true && isntPolicy == false) {
+    document.getElementById("isntPolicy").style.display = "none";
+    document.getElementById("isPolicy").style.display = "block";
+    document.getElementById("isntPolicy-input").disabled = true;
+  }
+  else if(isPolicy == true && isntPolicy == true) {
+    console.log("não pode");
+  }
+  else if(isPolicy == false && isntPolicy == true) {
+    document.getElementById("isPolicy").style.display = "none";
+    document.getElementById("isntPolicy").style.display = "block";
+    document.getElementById("isPolicy-input").disabled = true;
+  }
+  else if(isPolicy == false && isntPolicy == false) {
+    document.getElementById("isPolicy").style.display = "none";
+    document.getElementById("isntPolicy").style.display = "none";
+    document.getElementById("isPolicy-input").disabled = false;
+    document.getElementById("isntPolicy-input").disabled = false;
+  }
 }
 
 const goTo = () => {

@@ -146,6 +146,10 @@ h2 {
   display: none;
 }
 
+.policy-options {
+  color: #4caf50;
+}
+
 .title {
   margin-bottom: 10%!important;
 }
