@@ -67,10 +67,10 @@
   </div>
   </div>
   <div class="bottom">
-    <button class="button previous-button" onclick="createJson(policy); previous()">←</button>
-    <button class="button" onclick="createJson(policy)">Salvar</button>
+    <button class="button previous-button" onclick="createJson(); previous(); fillData(arrayGlobal)">←</button>
+    <button class="button" onclick="createJson()">Salvar</button>
     <button class="button save-button">Baixar</button>
-    <button class="button next-button" onclick="createJson(policy); next()">→</button>
+    <button class="button next-button" onclick="createJson(); next()">→</button>
   </div>
   <div class="navigation">
     <p id="id" contenteditable="true"></p>
@@ -79,7 +79,13 @@
 
   <script>
     const arrayGlobal = [];
-    let policy = -1;
+    var policy = -1;
+
+    document.querySelector('.save-button').addEventListener('click', (e) => {
+      e.preventDefault();
+      var array = JSON.stringify(arrayGlobal);
+      stringToFile(array);
+    });
 
   </script>
 </body>
