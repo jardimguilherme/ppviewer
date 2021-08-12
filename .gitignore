@@ -1,10 +1,10 @@
 #files
+list.json
+
+#personal settings
 package-lock.json
 package.json
 
-#data
-list.json
-
-#deprecated scripts
+#previous scripts
 server.js
 test.js
