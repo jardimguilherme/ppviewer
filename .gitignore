@@ -4,6 +4,7 @@ list.json
 #personal settings
 package-lock.json
 package.json
+.DS_store
 
 #previous scripts
 server.js
