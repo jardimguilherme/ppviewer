@@ -61,16 +61,25 @@
         <input type="checkbox" id="linksAtPageBottom" name="options" value="linksAtPageBottom" />
         <label for="linksAtPageBottom">Links no Fim da Página</label><br /><br />
         <input type="checkbox" id="featureList" name="options" value="featureList" />
-        <label for="featureList">Lista de Features</label>
+        <label for="featureList">Lista de Features</label><br /><br />
+        <input type="checkbox" id="accessError" name="options" value="accessError" />
+        <label for="accessError">Erro de Acesso</label><br /><br />
+        <input type="checkbox" id="others" name="options" value="others" onchange="checkOther()"/>
+        <label for="others">Outros: </label>
+        <textarea id="others-text" class="others-text" style="display: none;"></textarea>
+      </form>
+      <form id="observations">
+        <label for="obs" class="label-text">Observações:</label><br />
+        <textarea id="obs" name="obs"></textarea>
       </form>
     </div>
   </div>
   </div>
   <div class="bottom">
-    <button class="button previous-button" onclick="createJson(); previous(); fillData(arrayGlobal)">←</button>
+    <button class="button previous-button" id="back-button" onclick="createJson(); previous(); fillData(arrayGlobal)">←</button>
     <button class="button" onclick="createJson()">Salvar</button>
     <button class="button save-button">Baixar</button>
-    <button class="button next-button" onclick="createJson(); next()">→</button>
+    <button class="button next-button" id="next-button" onclick="createJson(); next(); fillData(arrayGlobal)">→</button>
   </div>
   <div class="navigation">
     <p id="id" contenteditable="true"></p>
